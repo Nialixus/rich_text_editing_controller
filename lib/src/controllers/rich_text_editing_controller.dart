@@ -57,49 +57,9 @@ class RichTextEditingController extends TextEditingController {
 
   @override
   set value(TextEditingValue newValue) {
-    bool isLesser = newValue.text.length < value.text.length;
-    bool isGreater = newValue.text.length > value.text.length;
-    bool isEqual = newValue.text == value.text;
-    bool isDuplicate = newValue.text == value.text &&
-        newValue.selection.start == value.selection.start &&
-        newValue.selection.end == value.selection.end;
-
-    String text(TextEditingValue value) {
-      int min(int value) => value < 0 ? 0 : value;
-      return value.text.substring(
-        min(value.selection.start - 1),
-        min(value.selection.end),
-      );
-    }
-
-    if (!isDuplicate) {
-      if (isLesser) {
-        deltas.add(TextEditingDeltaDeletion(
-            oldText: value.text,
-            deletedRange: value.selection,
-            selection: value.selection,
-            composing: value.composing));
-      } else if (isGreater) {
-        deltas.add(TextEditingDeltaInsertion(
-            oldText: value.text,
-            textInserted: text(newValue),
-            insertionOffset: value.selection.start,
-            selection: value.selection,
-            composing: value.composing));
-      } else if (!isEqual) {
-        deltas.add(TextEditingDeltaReplacement(
-            oldText: value.text,
-            replacedRange: newValue.selection,
-            replacementText: text(newValue),
-            selection: value.selection,
-            composing: value.composing));
-      } else if (isEqual) {
-        deltas.add(TextEditingDeltaNonTextUpdate(
-            oldText: value.text,
-            selection: value.selection,
-            composing: value.composing));
-      }
-    }
+    value.compareTo(newValue)?.then((delta) {
+      if (delta != null) deltas.add(delta);
+    });
 
     super.value = newValue;
   }
