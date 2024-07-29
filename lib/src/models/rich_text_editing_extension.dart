@@ -1,5 +1,11 @@
 part of '../../rich_text_editing_controller.dart';
 
+extension RichTextEditingOffsetExtension on Offset {
+  bool contains(int value) {
+    return value >= dx && value <= dy;
+  }
+}
+
 extension RichTextEditingDeltaExtension on TextEditingDelta {
   void then(void Function(TextEditingDelta?) callback) {
     callback(this);

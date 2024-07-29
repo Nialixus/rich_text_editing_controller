@@ -57,9 +57,8 @@ class RichTextEditingController extends TextEditingController {
 
   @override
   set value(TextEditingValue newValue) {
-    value.compareTo(newValue)?.then((delta) {
-      if (delta != null) deltas.add(delta);
-    });
+    var delta = value.compareTo(newValue);
+    if (delta != null) deltas.add(delta);
 
     super.value = newValue;
   }
@@ -70,11 +69,9 @@ class RichTextEditingController extends TextEditingController {
     TextStyle? style,
     required bool withComposing,
   }) {
-    ThemeData theme = Theme.of(context);
-    return TextSpan(
-        text: value.text,
-        style: TextStyle(
-          color: theme.colorScheme.onSurface,
-        ));
+    return RichTextEditingSpan(
+      deltas: deltas,
+      style: style,
+    );
   }
 }

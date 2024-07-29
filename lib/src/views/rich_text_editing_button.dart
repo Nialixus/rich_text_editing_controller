@@ -24,7 +24,7 @@ class RichTextButton extends StatelessWidget {
 
   /// [value] is
   factory RichTextButton.fontWeight({
-    FontWeight? Function(FontWeight? value)? value,
+    FontWeight? Function(FontWeight? value)? onChanged,
   }) {
     return RichTextButton(
       builder: (context, controller, child) {
@@ -33,8 +33,8 @@ class RichTextButton extends StatelessWidget {
         return IconButton(
           onPressed: () {
             controller.setFontWeight(
-              fontWeight: value != null
-                  ? value(controller.richValue.fontWeight)
+              fontWeight: onChanged != null
+                  ? onChanged(controller.richValue.fontWeight)
                   : isBold
                       ? null
                       : FontWeight.bold,

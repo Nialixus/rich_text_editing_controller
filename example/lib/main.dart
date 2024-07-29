@@ -31,16 +31,18 @@ class MyApp extends StatelessWidget {
               ),
             ),
             Expanded(
-              child: ListenableBuilder(
-                listenable: controller,
-                builder: (context, _) {
-                  return ListView.builder(
-                      itemCount: controller.deltas.length,
-                      itemBuilder: (context, index) {
-                        return Text(
-                            '${controller.deltas.reversed.elementAt(index)}\n');
-                      });
-                },
+              child: SelectionArea(
+                child: ListenableBuilder(
+                  listenable: controller,
+                  builder: (context, _) {
+                    return ListView.builder(
+                        itemCount: controller.deltas.length,
+                        itemBuilder: (context, index) {
+                          return Text(
+                              '${controller.deltas.reversed.elementAt(index)}\n');
+                        });
+                  },
+                ),
               ),
             ),
             Row(
