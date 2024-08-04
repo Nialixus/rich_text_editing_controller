@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rich_text_editing_controller/rich_text_editing_controller.dart';
+import 'package:rich_text_editing/rich_text_editing.dart';
 
 void main() {
   runApp(
@@ -18,39 +18,39 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = RichTextEditingController.of(context);
+
     return SafeArea(
-      child: Scaffold(
-        body: Column(
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            Expanded(
-              child: TextField(
-                controller: controller,
-                minLines: 10,
-                maxLines: null,
+        child: Scaffold(
+      body: Column(
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          Expanded(
+            child: TextField(
+              controller: controller,
+              minLines: 10,
+              maxLines: null,
+            ),
+          ),
+          Expanded(
+            child: SelectionArea(
+              child: ListenableBuilder(
+                listenable: controller,
+                builder: (context, _) {
+                  return ListView.builder(
+                      itemCount: controller.deltas.length,
+                      itemBuilder: (context, index) {
+                        return Text(
+                            '${controller.deltas.reversed.elementAt(index)}\n');
+                      });
+                },
               ),
             ),
-            Expanded(
-              child: SelectionArea(
-                child: ListenableBuilder(
-                  listenable: controller,
-                  builder: (context, _) {
-                    return ListView.builder(
-                        itemCount: controller.deltas.length,
-                        itemBuilder: (context, index) {
-                          return Text(
-                              '${controller.deltas.reversed.elementAt(index)}\n');
-                        });
-                  },
-                ),
-              ),
-            ),
-            Row(
-              children: [RichTextButton.fontWeight()],
-            )
-          ],
-        ),
+          ),
+          Row(
+            children: [RichTextButton.fontWeight()],
+          )
+        ],
       ),
-    );
+    ));
   }
 }

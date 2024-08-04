@@ -1,4 +1,4 @@
-part of '../../rich_text_editing_controller.dart';
+part of '../../rich_text_editing.dart';
 
 class _RichTextEditingProvider extends InheritedWidget {
   const _RichTextEditingProvider({

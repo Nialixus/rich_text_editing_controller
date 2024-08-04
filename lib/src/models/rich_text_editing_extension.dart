@@ -1,4 +1,4 @@
-part of '../../rich_text_editing_controller.dart';
+part of '../../rich_text_editing.dart';
 
 extension RichTextEditingOffsetExtension on Offset {
   bool contains(int value) {
@@ -74,5 +74,11 @@ extension RichTextEditingValueExtension on TextEditingValue {
     }
 
     return null;
+  }
+}
+
+extension OnTextStyle on TextStyle {
+  Map<String, dynamic> get toJSON {
+    return {};
   }
 }

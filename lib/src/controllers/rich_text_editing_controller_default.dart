@@ -1,4 +1,4 @@
-part of '../../rich_text_editing_controller.dart';
+part of '../../rich_text_editing.dart';
 
 class DefaultRichTextEditingController extends StatefulWidget {
   const DefaultRichTextEditingController.fromValue({

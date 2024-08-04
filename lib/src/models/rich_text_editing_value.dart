@@ -1,4 +1,4 @@
-part of '../../rich_text_editing_controller.dart';
+part of '../../rich_text_editing.dart';
 
 class RichTextEditingValue extends TextEditingValue {
   const RichTextEditingValue({

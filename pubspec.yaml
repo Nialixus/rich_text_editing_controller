@@ -1,7 +1,7 @@
-name: rich_text_editing_controller
+name: rich_text_editing
 description: "A new Flutter package project."
 version: 0.0.1
-homepage:
+homepage: https://github.com/Nialixus/rich_text_field
 
 environment:
   sdk: '>=3.4.4 <4.0.0'

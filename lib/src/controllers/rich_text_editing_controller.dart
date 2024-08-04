@@ -1,4 +1,4 @@
-part of '../../rich_text_editing_controller.dart';
+part of '../../rich_text_editing.dart';
 
 class RichTextEditingController extends TextEditingController {
   RichTextEditingController({super.text})
@@ -72,6 +72,7 @@ class RichTextEditingController extends TextEditingController {
     return RichTextEditingSpan(
       deltas: deltas,
       style: style,
+      text: value.text,
     );
   }
 }
