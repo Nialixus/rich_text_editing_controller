@@ -10,4 +10,5 @@ part 'src/models/rich_text_editing_extension.dart';
 part 'src/models/rich_text_editing_span.dart';
 part 'src/models/rich_text_editing_value.dart';
 part 'src/views/rich_text_editing_button.dart';
+part 'src/views/rich_text_editing_field.dart';
 part 'src/views/rich_text_editing_provider.dart';

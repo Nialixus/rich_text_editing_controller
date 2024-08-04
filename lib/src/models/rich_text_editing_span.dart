@@ -46,10 +46,10 @@ class RichTextEditingSpan extends TextSpan {
         // ]);
       }
     }
-
-    // if (span.length > text.runes.length) {
-    //   span.removeRange(text.runes.length, span.length);
-    // }
+    print('text length: ${text.runes.length} span length: ${span.length}');
+    if (span.length > text.runes.length) {
+      span.removeRange(text.runes.length, span.length);
+    }
 
     return span;
   }

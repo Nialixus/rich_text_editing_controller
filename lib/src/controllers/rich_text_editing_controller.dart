@@ -12,6 +12,8 @@ class RichTextEditingController extends TextEditingController {
     required RichTextEditingValue value,
   }) : _value = value;
 
+  final FocusNode node = FocusNode();
+
   List<TextEditingDelta> deltas = [];
 
   factory RichTextEditingController.of(BuildContext context) {
@@ -74,5 +76,11 @@ class RichTextEditingController extends TextEditingController {
       style: style,
       text: value.text,
     );
+  }
+
+  @override
+  void dispose() {
+    node.dispose();
+    super.dispose();
   }
 }
